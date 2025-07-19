@@ -2,6 +2,8 @@
 
 A simple Spring Boot application that demonstrates basic REST endpoints.
 
+*Last Updated: July 19, 2025*
+
 ### Overview
 
 This project is a Spring Boot application that provides simple REST endpoints returning greeting messages. It serves as a basic demonstration of Spring Boot's web capabilities.
@@ -12,6 +14,7 @@ This project is a Spring Boot application that provides simple REST endpoints re
 - Spring Boot 3.5.3
 - Maven
 - JUnit 5 for testing
+- JaCoCo 0.8.13 for code coverage
 
 ### Prerequisites
 
@@ -23,7 +26,7 @@ This project is a Spring Boot application that provides simple REST endpoints re
 #### Clone the repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/abdelaziz-hammad/hello-world.git
 cd hello-world
 ```
 
@@ -52,12 +55,21 @@ The application will start on port 8080 (default).
 
 The application includes automated tests to verify the HTTP responses:
 
+
+You can run the tests using the Maven Wrapper:
 ```bash
-./mvnw test
+./mvnw clean test
+```
+You can also run the tests using the system-installed Maven:
+```bash
+mvn clean test
 ```
 
 The test suite includes:
-- `CheckHTTPResponseTest`: Verifies that the root endpoint returns the expected greeting message
+- `CheckHTTPResponseTest`: Verifies that both endpoints (root and `/welcome`) return the expected greeting messages
+- `HelloWorldApplicationTests`: Verifies that the application context loads correctly and tests the main method
+
+After running tests, JaCoCo generates code coverage reports in the `target/site/jacoco` directory. You can open `target/site/jacoco/index.html` in a browser to view the coverage results.
 
 ### Project Structure
 
@@ -75,6 +87,9 @@ hello-world/
 │           └── com/springdemo/helloworld/
 │               ├── CheckHTTPResponseTest.java    # HTTP response tests
 │               └── HelloWorldApplicationTests.java # Application context tests
+├── target/
+│   └── site/
+│       └── jacoco/                               # JaCoCo code coverage reports
 ├── .gitattributes
 ├── .gitignore
 ├── HELP.md
@@ -100,6 +115,3 @@ The following guides illustrate how to use some features concretely:
 * [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
 * [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
 
-### License
-
-This project is licensed under the [MIT License](LICENSE).
