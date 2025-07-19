@@ -22,5 +22,8 @@ public class CheckHTTPResponseTest {
         assertEquals("Hello World from Spring Boot!",
                 this.testRestTemplate.getForObject("http://localhost:" + port + "/",
                         String.class));
+        assertEquals("Bienvenue à Spring Boot!",
+                this.testRestTemplate.getForObject("http://localhost:" + port + "/welcome",
+                        String.class));
     }
 }

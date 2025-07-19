@@ -9,5 +9,9 @@ class HelloWorldApplicationTests {
     @Test
     void contextLoads() {
     }
+    @Test
+    void testMainMethod() {
+        HelloWorldApplication.main(new String[] {});
+    }
 
 }
